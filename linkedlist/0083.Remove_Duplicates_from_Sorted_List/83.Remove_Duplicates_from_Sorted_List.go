@@ -33,8 +33,8 @@ func deleteDuplicates(head *ListNode) *ListNode {
 	return head
 }
 
-func main(){
-	arr1 := []int{1,1,2,4}
+func main() {
+	arr1 := []int{1, 1, 2, 4}
 	l1 := model.Int2ListNOde(arr1)
 	res := deleteDuplicates(l1)
 	resArr := model.ListNode2Int(res)

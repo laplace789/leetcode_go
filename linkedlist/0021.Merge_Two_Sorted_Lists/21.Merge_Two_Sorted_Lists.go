@@ -1,7 +1,6 @@
-package main
+package linkedList
 
 import (
-	"fmt"
 	"leetcode_go/model"
 )
 
@@ -18,8 +17,9 @@ type ListNode = model.ListNode
 	Output: [1,1,2,3,4,4]
 
 	loop:
-    1. (1,2,4) (1,3,4)
-	2. (1,2,4) (3,4)
+
+	1 -> merge(1,3) -> merge(2,3) -> merge(4,3) -> merge(4,4) -> merge(4,nil)
+    1->next  return l1=1  return l1=2   return l2=3   return l1=4   return l2=4
 */
 
 //split to small array use less memory
@@ -40,27 +40,28 @@ func mergeTwoLists(l1 *ListNode, l2 *ListNode) *ListNode {
 
 func mergeTwoLists2(l1 *ListNode, l2 *ListNode) *ListNode {
 	head := &ListNode{Val: 0}
-	cur :=head
-	for l1 != nil && l2 != nil  {
+	cur := head
+	for l1 != nil && l2 != nil {
 		if l1.Val < l2.Val {
 			cur.Next = l1
 			l1 = l1.Next
-		}else{
+		} else {
 			cur.Next = l2
 			l2 = l2.Next
 		}
 		cur = cur.Next
 	}
-	if l1 != nil{
+	if l1 != nil {
 		cur.Next = l1
 	}
-	if l2 != nil{
+	if l2 != nil {
 		cur.Next = l2
 	}
 
 	return head.Next
 }
 
+/*
 func main() {
 	arr1 := []int{1, 2, 3,4}
 	arr2 := []int{1, 3, 4}
@@ -72,3 +73,4 @@ func main() {
 	resArr := model.ListNode2Int(res)
 	fmt.Println(resArr)
 }
+*/
