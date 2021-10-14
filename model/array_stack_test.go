@@ -5,19 +5,19 @@ import (
 	"testing"
 )
 
-func Test_IntStackPush(t *testing.T) {
+func Test_ArrayStackPush(t *testing.T) {
 	type arg struct {
-		stacks []*IntStack
+		stacks []*ArrayStack
 	}
 
 	args := &arg{}
-	stackArr := make([]*IntStack, 0)
-	stack1 := NewIntStack(5)
+	stackArr := make([]*ArrayStack, 0)
+	stack1 := NewArrayStack(5)
 	stack1.Push(1)
 	stack1.Push(2)
 	stack1.Push(3)
 
-	stack2 := NewIntStack(3)
+	stack2 := NewArrayStack(3)
 	stack2.Push(1)
 	stack2.Push(2)
 	stack2.Push(3)
@@ -29,7 +29,7 @@ func Test_IntStackPush(t *testing.T) {
 
 	tests := []struct {
 		name    string
-		stack   *IntStack
+		stack   *ArrayStack
 		wantLen int
 		wantErr error
 	}{
@@ -51,6 +51,7 @@ func Test_IntStackPush(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			var gotErrorStr string
 			err := tt.stack.Push(1)
+			//size := tt.stack.Size()
 			if err == nil {
 				gotErrorStr = ""
 			} else {
@@ -60,8 +61,8 @@ func Test_IntStackPush(t *testing.T) {
 			if gotErrorStr != tt.wantErr.Error() {
 				t.Errorf("wanrErr = %v ,getErr = %v", tt.wantErr, gotErrorStr)
 			}
-			if tt.wantLen != tt.stack.Size {
-				t.Errorf("wanrLen = %v ,getLen = %v", tt.wantLen, tt.stack.Size)
+			if tt.wantLen != tt.stack.Size() {
+				t.Errorf("wanrLen = %v ,getLen = %v", tt.wantLen, tt.stack.Size())
 			}
 		})
 	}
@@ -70,17 +71,17 @@ func Test_IntStackPush(t *testing.T) {
 
 func Test_IntStackPop(t *testing.T) {
 	type arg struct {
-		stacks []*IntStack
+		stacks []*ArrayStack
 	}
 
 	args := &arg{}
-	stackArr := make([]*IntStack, 0)
-	stack1 := NewIntStack(5)
+	stackArr := make([]*ArrayStack, 0)
+	stack1 := NewArrayStack(5)
 	stack1.Push(1)
 	stack1.Push(2)
 	stack1.Push(3)
 
-	stack2 := NewIntStack(3)
+	stack2 := NewArrayStack(3)
 
 	stackArr = append(stackArr, stack1)
 	stackArr = append(stackArr, stack2)
@@ -89,7 +90,7 @@ func Test_IntStackPop(t *testing.T) {
 
 	tests := []struct {
 		name    string
-		stack   *IntStack
+		stack   *ArrayStack
 		wantLen int
 		wantVal int
 		wantErr error
@@ -122,8 +123,8 @@ func Test_IntStackPop(t *testing.T) {
 			if gotErrorStr != tt.wantErr.Error() {
 				t.Errorf("wanrErr = %v ,gotErr = %v", tt.wantErr, gotErrorStr)
 			}
-			if tt.wantLen != tt.stack.Size {
-				t.Errorf("wanrLen = %v ,gotLen = %v", tt.wantLen, tt.stack.Size)
+			if tt.wantLen != tt.stack.Size() {
+				t.Errorf("wanrLen = %v ,gotLen = %v", tt.wantLen, tt.stack.Size())
 			}
 
 			if tt.wantVal != gotVal {
@@ -135,12 +136,12 @@ func Test_IntStackPop(t *testing.T) {
 
 func Test_IntStackPop_multi(t *testing.T) {
 	type arg struct {
-		stacks []*IntStack
+		stacks []*ArrayStack
 	}
 
 	args := &arg{}
-	stackArr := make([]*IntStack, 0)
-	stack1 := NewIntStack(5)
+	stackArr := make([]*ArrayStack, 0)
+	stack1 := NewArrayStack(5)
 	stack1.Push(1)
 	stack1.Push(2)
 	stack1.Push(3)
@@ -151,7 +152,7 @@ func Test_IntStackPop_multi(t *testing.T) {
 
 	tests := []struct {
 		name     string
-		stack    *IntStack
+		stack    *ArrayStack
 		want1Len int
 		want1Val int
 		want1Err error
@@ -183,8 +184,8 @@ func Test_IntStackPop_multi(t *testing.T) {
 			if gotErrorStr1 != tt.want1Err.Error() {
 				t.Errorf("want1Err = %v ,got1Err = %v", tt.want1Err, gotErrorStr1)
 			}
-			if tt.want1Len != tt.stack.Size {
-				t.Errorf("wanr1Len = %v ,got1Len = %v", tt.want1Len, tt.stack.Size)
+			if tt.want1Len != tt.stack.Size() {
+				t.Errorf("wanr1Len = %v ,got1Len = %v", tt.want1Len, tt.stack.Size())
 			}
 
 			if tt.want1Val != got1Val {
@@ -201,8 +202,8 @@ func Test_IntStackPop_multi(t *testing.T) {
 			if gotErrorStr2 != tt.want2Err.Error() {
 				t.Errorf("want2Err = %v ,got2Err = %v", tt.want2Err, gotErrorStr2)
 			}
-			if tt.want2Len != tt.stack.Size {
-				t.Errorf("wanr2Len = %v ,got2Len = %v", tt.want2Len, tt.stack.Size)
+			if tt.want2Len != tt.stack.Size() {
+				t.Errorf("wanr2Len = %v ,got2Len = %v", tt.want2Len, tt.stack.Size())
 			}
 
 			if tt.want2Val != got2Val {
