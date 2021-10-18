@@ -6,12 +6,7 @@ import (
 )
 
 func Test_ArrayStackPush(t *testing.T) {
-	type arg struct {
-		stacks []*ArrayStack
-	}
 
-	args := &arg{}
-	stackArr := make([]*ArrayStack, 0)
 	stack1 := NewArrayStack(5)
 	stack1.Push(1)
 	stack1.Push(2)
@@ -21,11 +16,6 @@ func Test_ArrayStackPush(t *testing.T) {
 	stack2.Push(1)
 	stack2.Push(2)
 	stack2.Push(3)
-
-	stackArr = append(stackArr, stack1)
-	stackArr = append(stackArr, stack2)
-
-	args.stacks = stackArr
 
 	tests := []struct {
 		name    string
@@ -69,24 +59,14 @@ func Test_ArrayStackPush(t *testing.T) {
 
 }
 
-func Test_IntStackPop(t *testing.T) {
-	type arg struct {
-		stacks []*ArrayStack
-	}
+func Test_ArrayStackPop(t *testing.T) {
 
-	args := &arg{}
-	stackArr := make([]*ArrayStack, 0)
 	stack1 := NewArrayStack(5)
 	stack1.Push(1)
 	stack1.Push(2)
 	stack1.Push(3)
 
 	stack2 := NewArrayStack(3)
-
-	stackArr = append(stackArr, stack1)
-	stackArr = append(stackArr, stack2)
-
-	args.stacks = stackArr
 
 	tests := []struct {
 		name    string
@@ -134,7 +114,7 @@ func Test_IntStackPop(t *testing.T) {
 	}
 }
 
-func Test_IntStackPop_multi(t *testing.T) {
+func Test_ArrayStack_Pop_multi(t *testing.T) {
 	type arg struct {
 		stacks []*ArrayStack
 	}

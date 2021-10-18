@@ -27,7 +27,7 @@ func Test_numJewelsInStones(t *testing.T) {
 		t.Run(tt.name, func(t *testing.T) {
 			got := numJewelsInStones(tt.jewels, tt.stones)
 			if got != tt.want {
-				t.Errorf("want val = %v ,got val = %v",tt.want,got)
+				t.Errorf("want val = %v ,got val = %v", tt.want, got)
 			}
 		})
 	}

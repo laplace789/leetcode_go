@@ -32,3 +32,24 @@ func ListNode2Int(node *ListNode) []int {
 
 	return arr
 }
+
+func Int2ListNOdeWithCycle(arr []int, cycleHeadIndex int) *ListNode {
+	var cycleHead *ListNode
+	if len(arr) == 0 {
+		return nil
+	}
+	head := &ListNode{}
+	headNext := head
+	for index, val := range arr {
+		headNext.Next = &ListNode{Val: val}
+		headNext = headNext.Next
+		if index == cycleHeadIndex {
+			cycleHead = headNext
+		}
+		//last index form a cycle
+		if index == len(arr)-1 {
+			headNext.Next = cycleHead
+		}
+	}
+	return head.Next
+}

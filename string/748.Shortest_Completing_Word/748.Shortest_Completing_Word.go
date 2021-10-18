@@ -21,9 +21,11 @@ func shortestCompletingWord(licensePlate string, words []string) string {
 	letters := make([]uint8, 0)
 	//matchArr := make([]map[bool]int,0)
 	for i := 0; i < len(licensePlate); i++ {
+		//a-z
 		if licensePlate[i] >= 65 && licensePlate[i] <= 90 {
 			letters = append(letters, licensePlate[i]+32)
 		} else if licensePlate[i] >= 97 && licensePlate[i] <= 122 {
+			//A-Z
 			letters = append(letters, licensePlate[i])
 		}
 	}

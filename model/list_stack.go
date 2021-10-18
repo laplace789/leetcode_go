@@ -26,11 +26,14 @@ func (l *ListStack) Push(val int) {
 		}
 		l.top = top
 		l.size++
+		return
 	}
 	newTop := &ListNode{
 		Val: val,
 	}
 	newTop.Next = l.top
+	l.top = newTop
+	l.size++
 }
 
 func (l *ListStack) Pop() (int, error) {
@@ -39,5 +42,6 @@ func (l *ListStack) Pop() (int, error) {
 	}
 	currentTop := l.top
 	l.top = l.top.Next
+	l.size--
 	return currentTop.Val, nil
 }

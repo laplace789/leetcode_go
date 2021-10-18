@@ -1,4 +1,4 @@
-package linkedList
+package linkedlist
 
 import (
 	"leetcode_go/model"
