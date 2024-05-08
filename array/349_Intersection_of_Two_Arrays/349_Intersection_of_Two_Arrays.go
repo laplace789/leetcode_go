@@ -8,9 +8,9 @@ func intersection(nums1 []int, nums2 []int) []int {
 		return []int{}
 	}
 
-	set := make(map[int]interface{})
+	set := make(map[int]struct{})
 	for _, n := range nums1 {
-		set[n] = nil
+		set[n] = struct{}{}
 	}
 	var res []int
 	//check duplicate
